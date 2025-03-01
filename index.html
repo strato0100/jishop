@@ -4,54 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información de Jishop</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <title>Jishop el Gatito</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            background-image: url('img/img1.jpeg');
+            background-size: cover;
+            color: white;
+        }
+
+        .carousel .carousel-item {
+            width: 300px;
+        }
+    </style>
 </head>
 
-<body style="background-color: #f0f0f0;"></body>
-<section class="section">
+<body>
     <div class="container">
-        <h1 class="title">Información de Jishop</h1>
-        <div class="columns">
-            <div class="column">
-                <figure class="image is-4by3">
-                    <img src="img/img1.jpeg" alt="Foto de Jishop">
-                </figure>
-            </div>
-            <div class="column">
-                <figure class="image is-4by3">
-                    <img src="img/img2.jpeg" alt="Foto de Jishop">
-                </figure>
-            </div>
-            <div class="column">
-                <figure class="image is-4by3">
-                    <img src="img/img3.jpeg" alt="Foto de Jishop">
-                </figure>
-            </div>
-            <div class="column">
-                <figure class="image is-4by3">
-                    <img src="img/img4.jpeg" alt="Foto de Jishop">
-                </figure>
-            </div>
+        <h1 class="center-align">Jishop el Gatito</h1>
+        <div class="carousel">
+            <a class="carousel-item" href="#one!"><img src="img/img1.jpeg"></a>
+            <a class="carousel-item" href="#two!"><img src="img/img2.jpeg"></a>
+            <a class="carousel-item" href="#three!"><img src="img/img3.jpeg"></a>
+            <a class="carousel-item" href="#four!"><img src="img/img4.jpeg"></a>
+            <a class="carousel-item" href="#five!"><img src="img/img5.jpeg"></a>
+            <a class="carousel-item" href="#six!"><img src="img/img6.jpeg"></a>
         </div>
-        <div class="box">
-            <h2 class="subtitle">Datos de Jishop</h2>
-            <p><strong>Nombre:</strong> Jishop</p>
-            <p><strong>Edad:</strong> 3 años</p>
-            <p><strong>Raza:</strong> Siamés</p>
-            <p><strong>Color:</strong> Blanco y marrón</p>
-            <p><strong>Fecha de nacimiento:</strong> 15 de marzo de 2020</p>
-            <p><strong>Vacunas:</strong></p>
-            <ul>
-                <li>Rabia: 20 de marzo de 2021</li>
-                <li>Leucemia felina: 20 de marzo de 2021</li>
-                <li>Panleucopenia: 20 de marzo de 2021</li>
-            </ul>
-            <p><strong>Descripción:</strong> Jishop es un gato muy cariñoso y juguetón. Le encanta dormir en lugares
-                soleados y jugar con su pelota de lana.</p>
-        </div>
+        <h2>Información Principal</h2>
+        <p>Jishop es un gatito adorable que le encanta jugar y explorar. Es muy cariñoso y siempre está buscando nuevas
+            aventuras.</p>
+        <h2>Contacto</h2>
+        <form>
+            <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="name" type="text" class="validate">
+                <label for="name">Nombre</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" class="validate">
+                <label for="email">Correo Electrónico</label>
+            </div>
+            <div class="input-field">
+                <i class="material-icons prefix">message</i>
+                <textarea id="message" class="materialize-textarea"></textarea>
+                <label for="message">Mensaje</label>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
     </div>
-</section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems, {
+                fullWidth: true,
+                indicators: true
+            });
+        });
+    </script>
 </body>
 
 </html>
