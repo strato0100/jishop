@@ -11,18 +11,23 @@
         body {
             background-image: url('img/img1.jpeg');
             background-size: cover;
+            background-repeat: no-repeat;
             color: white;
         }
 
-        .carousel .carousel-item {
-            width: 300px;
+        .carousel {
+            height: 400px;
+        }
+
+        .carousel-item img {
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="center-align">Jishop el Gatito</h1>
+        <h1 class="center-align">Jishop</h1>
         <div class="carousel">
             <a class="carousel-item" href="#one!"><img src="img/img1.jpeg"></a>
             <a class="carousel-item" href="#two!"><img src="img/img2.jpeg"></a>
@@ -31,27 +36,30 @@
             <a class="carousel-item" href="#five!"><img src="img/img5.jpeg"></a>
             <a class="carousel-item" href="#six!"><img src="img/img6.jpeg"></a>
         </div>
-        <h2>Información Principal</h2>
-        <p>Jishop es un gatito adorable que le encanta jugar y explorar. Es muy cariñoso y siempre está buscando nuevas
-            aventuras.</p>
+        <h2>Información de Jishop</h2>
+        <p>Jishop nació el 20 de diciembre de 2024. Actualmente tiene <span id="age"></span> meses (<span
+                id="years"></span> años).</p>
+        <h3>Vacunas</h3>
+        <ul>
+            <li>Vacuna 1: 20 de enero de 2025</li>
+            <li>Vacuna 2: 20 de febrero de 2025</li>
+            <li>Vacuna 3: 20 de marzo de 2025</li>
+        </ul>
+        <h3>Información del Propietario</h3>
+        <p>Nombre: Juan Pérez</p>
+        <p>Teléfono: +34 600 123 456</p>
+        <p>Email: juan.perez@example.com</p>
         <h2>Contacto</h2>
-        <form>
+        <form id="contactForm">
             <div class="input-field">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="name" type="text" class="validate">
+                <input id="name" type="text" class="validate" required>
                 <label for="name">Nombre</label>
             </div>
             <div class="input-field">
-                <i class="material-icons prefix">email</i>
-                <input id="email" type="email" class="validate">
-                <label for="email">Correo Electrónico</label>
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">message</i>
-                <textarea id="message" class="materialize-textarea"></textarea>
+                <textarea id="message" class="materialize-textarea" required></textarea>
                 <label for="message">Mensaje</label>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+            <button class="btn waves-effect waves-light" type="submit">Enviar
                 <i class="material-icons right">send</i>
             </button>
         </form>
@@ -64,6 +72,34 @@
             var instances = M.Carousel.init(elems, {
                 fullWidth: true,
                 indicators: true
+            });
+
+            const birthDate = new Date('2024-12-20');
+            const today = new Date();
+            const ageInMonths = (today.getFullYear() - birthDate.getFullYear()) * 12 + (today.getMonth() - birthDate.getMonth());
+            const ageInYears = Math.floor(ageInMonths / 12);
+
+            document.getElementById('age').textContent = ageInMonths;
+            document.getElementById('years').textContent = ageInYears;
+
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const message = document.getElementById('message').value;
+
+                fetch('https://example.com/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, message })
+                }).then(response => {
+                    if (response.ok) {
+                        M.toast({ html: 'Mensaje enviado!' });
+                    } else {
+                        M.toast({ html: 'Error al enviar el mensaje.' });
+                    }
+                });
             });
         });
     </script>
